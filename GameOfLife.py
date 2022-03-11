@@ -83,6 +83,10 @@ class GameOfLife:
     def clearBoard(self):
         self.gameBoard = np.zeros(shape=(self.gridSize, self.gridSize))
 
+    def displayBoard(self):
+            plt.imshow(self.gameBoard, interpolation='nearest')
+            plt.show()
+
 
 def main():
     print("Welcome to Conway's Game of Life")
@@ -117,7 +121,19 @@ def main():
         Game = GameOfLife(userGridLength)
         print("Your game has been initiated\n"
               "This is how your game board currently looks like")
-        print(Game.gameBoard)
+        Game.displayBoard()
+        while userInput != 'd':
+            userInput= input("To plant life onto your game board, press 'p'\n"
+                             "To finalize your game board, press 'd'\n")
+            if userInput == 'p':
+                x = int(input("Enter the x coordinate of your desired life form (0 - "+str(userGridLength)+")\n"))
+                y = int(input("Enter the y coordinate of your desired life form (0 - "+str(userGridLength)+")\n"))
+                Game.plantLife(x,y)
+                print("This is how your game board currently looks like")
+                Game.displayBoard()
+
+
+
 
 
 if __name__ == '__main__':
