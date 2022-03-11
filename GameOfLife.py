@@ -22,8 +22,8 @@ class GameOfLife:
     The body of our game will be contained in this class
     """
     # Static variables representing cell states on our game board.
-    ON = 1
-    OFF = 0
+    ON = 1.00
+    OFF = 0.00
     gridSize = 9
     gameBoard = np.zeros(shape=(9, 9))
 
@@ -39,41 +39,36 @@ class GameOfLife:
         self.gameBoard = np.zeros(shape=(gridSize, gridSize))
 
     def plantLife(self, i: int, j: int):
-        self.gameBoard[i,j] = self.ON
+        self.gameBoard[i, j] = self.ON
 
     def cellNeighbors(self, i: int, j: int) -> float:
-        iPlusOne = i + 1
-        jPlusOne = j + 1
-        if iPlusOne == self.gridSize:
-            iPlusOne = 0
-        if jPlusOne == self.gridSize:
-            jPlusOne = 0
         neighborSum = 0
         cellNeighbors = [
-                    self.gameBoard[i - 1, j - 1],
-                    self.gameBoard[i - 1, j],
-                    self.gameBoard[i - 1, jPlusOne],
-                    self.gameBoard[i, j - 1],
-                    self.gameBoard[i, jPlusOne],
-                    self.gameBoard[iPlusOne, j - 1],
-                    self.gameBoard[iPlusOne, j],
-                    self.gameBoard[iPlusOne, jPlusOne]
+                    self.gameBoard[(i - 1) % self.gridSize, (j - 1) % self.gridSize],
+                    self.gameBoard[(i - 1) % self.gridSize, j],
+                    self.gameBoard[(i - 1) % self.gridSize, (j + 1) % self.gridSize],
+                    self.gameBoard[i, (j - 1) % self.gridSize],
+                    self.gameBoard[i, (j + 1) % self.gridSize],
+                    self.gameBoard[(i + 1) % self.gridSize, (j - 1) % self.gridSize],
+                    self.gameBoard[(i + 1) % self.gridSize, j],
+                    self.gameBoard[(i + 1) % self.gridSize, (j + 1) % self.gridSize]
                 ]
         for k in cellNeighbors:
+            print("k: "+str(k)+" i: "+str(i)+" j: "+str(j))
             neighborSum += k
         return neighborSum
 
     def gameMain(self):
-        newBoard = self.gameBoard
+        newBoard = self.gameBoard.copy()
+        print("ITERATION")
         for i in range(0, self.gridSize):
             for j in range(0, self.gridSize):
-                neighborCount = self.cellNeighbors(i, j)
-                if self.gameBoard[i, j] == self.ON and neighborCount < 2:
-                    newBoard[i, j] = self.OFF
-                elif self.gameBoard[i, j] == self.ON and neighborCount > 3:
-                    newBoard[i, j] = self.OFF
-                elif self.gameBoard[i, j] == self.OFF and neighborCount == 3:
-                    newBoard[i, j] = self.ON
+                if self.gameBoard[i,j] == self.ON:
+                    if self.cellNeighbors(i,j) < 2 or self.cellNeighbors(i,j) > 3:
+                        newBoard[i,j] = self.OFF
+                else:
+                    if self.cellNeighbors(i,j) == 3:
+                        newBoard[i,j] = self.ON
         self.gameBoard = newBoard
 
     def clearBoard(self):
@@ -89,6 +84,9 @@ newGame.plantLife(3, 3)
 newGame.plantLife(2, 3)
 newGame.plantLife(1, 4)
 newGame.plantLife(2, 5)
+print(newGame.cellNeighbors(3, 3))
+print(newGame.cellNeighbors(2, 3))
+print(newGame.cellNeighbors(3, 4))
 newGame.outGame()
 newGame.gameMain()
 newGame.outGame()
@@ -97,6 +95,10 @@ newGame.outGame()
 newGame.gameMain()
 newGame.outGame()
 newGame.gameMain()
-
-
-
+newGame.outGame()
+newGame.gameMain()
+newGame.outGame()
+newGame.gameMain()
+newGame.outGame()
+newGame.gameMain()
+v
