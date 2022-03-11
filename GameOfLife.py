@@ -33,12 +33,13 @@ class GameOfLife:
     
     Default grid size = 9
     """
+
     def __init__(self, gridSize: int = 9):
         self.gridSize = gridSize
         self.gameBoard = np.zeros(shape=(gridSize, gridSize))
 
     def plantLife(self, i: int, j: int):
-        self.gameBoard[i][j] = self.ON
+        self.gameBoard[i,j] = self.ON
 
     def cellNeighbors(self, i: int, j: int) -> float:
         iPlusOne = i + 1
@@ -49,14 +50,14 @@ class GameOfLife:
             jPlusOne = 0
         neighborSum = 0
         cellNeighbors = [
-                    self.gameBoard[i - 1][j - 1],
-                    self.gameBoard[i - 1][j],
-                    self.gameBoard[i - 1][jPlusOne],
-                    self.gameBoard[i][j - 1],
-                    self.gameBoard[i][jPlusOne],
-                    self.gameBoard[iPlusOne][j - 1],
-                    self.gameBoard[iPlusOne][j],
-                    self.gameBoard[iPlusOne][jPlusOne]
+                    self.gameBoard[i - 1, j - 1],
+                    self.gameBoard[i - 1, j],
+                    self.gameBoard[i - 1, jPlusOne],
+                    self.gameBoard[i, j - 1],
+                    self.gameBoard[i, jPlusOne],
+                    self.gameBoard[iPlusOne, j - 1],
+                    self.gameBoard[iPlusOne, j],
+                    self.gameBoard[iPlusOne, jPlusOne]
                 ]
         for k in cellNeighbors:
             neighborSum += k
@@ -67,12 +68,12 @@ class GameOfLife:
         for i in range(0, self.gridSize):
             for j in range(0, self.gridSize):
                 neighborCount = self.cellNeighbors(i, j)
-                if self.gameBoard[i][j] == self.ON and neighborCount < 2:
-                    newBoard[i][j] = self.OFF
-                elif self.gameBoard[i][j] == self.ON and neighborCount > 3:
-                    newBoard[i][j] = self.OFF
-                elif self.gameBoard[i][j] == self.OFF and neighborCount == 3:
-                    newBoard[i][j] = self.ON
+                if self.gameBoard[i, j] == self.ON and neighborCount < 2:
+                    newBoard[i, j] = self.OFF
+                elif self.gameBoard[i, j] == self.ON and neighborCount > 3:
+                    newBoard[i, j] = self.OFF
+                elif self.gameBoard[i, j] == self.OFF and neighborCount == 3:
+                    newBoard[i, j] = self.ON
         self.gameBoard = newBoard
 
     def clearBoard(self):
@@ -84,7 +85,18 @@ class GameOfLife:
 
 
 newGame = GameOfLife(9)
-newGame.plantLife(1,3)
+newGame.plantLife(3, 3)
+newGame.plantLife(2, 3)
+newGame.plantLife(1, 4)
+newGame.plantLife(2, 5)
 newGame.outGame()
 newGame.gameMain()
 newGame.outGame()
+newGame.gameMain()
+newGame.outGame()
+newGame.gameMain()
+newGame.outGame()
+newGame.gameMain()
+
+
+
