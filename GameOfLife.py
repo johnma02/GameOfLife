@@ -78,6 +78,7 @@ class GameOfLife:
                         newBoard[i, j] = self.ON
         self.gameBoard = newBoard
         return self.gameBoard
+
     # clears the board / replaces all values in the board with 0 or OFF
     def clearBoard(self):
         self.gameBoard = np.zeros(shape=(self.gridSize, self.gridSize))
@@ -86,9 +87,9 @@ class GameOfLife:
 def main():
     print("Welcome to Conway's Game of Life")
     userInput = input("For an explanation of Conway's Game of Life, press [e]\n"
-          "To create a game of Conway's Game of Life, press [p]\n"
-          "To quit Conway's Game of Life, press [q]\n")
-    validUserInputs = ['e','p','q']
+                      "To create a game of Conway's Game of Life, press [p]\n"
+                      "To quit Conway's Game of Life, press [q]\n")
+    validUserInputs = ['e', 'p', 'q']
     if userInput not in validUserInputs:
         print("-- Invalid input --")
         main()
@@ -112,12 +113,12 @@ def main():
         print("Exiting...")
         return
     if userInput == 'p':
-        userGridLength = None
-        while type(userGridLength) != int:
-            userGridLength = input("Enter an integer to represent your 2D array game board's size\n")
+        userGridLength = int(input("Enter an integer to represent your 2D array game board's size\n"))
+        Game = GameOfLife(userGridLength)
+        print("Your game has been initiated\n"
+              "This is how your game board currently looks like")
+        print(Game.gameBoard)
 
 
-
-    int(input())
 if __name__ == '__main__':
     main()
