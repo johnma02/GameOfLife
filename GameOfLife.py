@@ -38,67 +38,58 @@ class GameOfLife:
         self.gridSize = gridSize
         self.gameBoard = np.zeros(shape=(gridSize, gridSize))
 
+    # set a point on the game board to ON
     def plantLife(self, i: int, j: int):
         self.gameBoard[i, j] = self.ON
 
+    # checks the 8 neighbors of a point on the game board
     def cellNeighbors(self, i: int, j: int) -> float:
         neighborSum = 0
         cellNeighbors = [
-                    self.gameBoard[(i - 1) % self.gridSize, (j - 1) % self.gridSize],
-                    self.gameBoard[(i - 1) % self.gridSize, j],
-                    self.gameBoard[(i - 1) % self.gridSize, (j + 1) % self.gridSize],
-                    self.gameBoard[i, (j - 1) % self.gridSize],
-                    self.gameBoard[i, (j + 1) % self.gridSize],
-                    self.gameBoard[(i + 1) % self.gridSize, (j - 1) % self.gridSize],
-                    self.gameBoard[(i + 1) % self.gridSize, j],
-                    self.gameBoard[(i + 1) % self.gridSize, (j + 1) % self.gridSize]
-                ]
+            self.gameBoard[(i - 1) % self.gridSize, (j - 1) % self.gridSize],
+            self.gameBoard[(i - 1) % self.gridSize, j],
+            self.gameBoard[(i - 1) % self.gridSize, (j + 1) % self.gridSize],
+            self.gameBoard[i, (j - 1) % self.gridSize],
+            self.gameBoard[i, (j + 1) % self.gridSize],
+            self.gameBoard[(i + 1) % self.gridSize, (j - 1) % self.gridSize],
+            self.gameBoard[(i + 1) % self.gridSize, j],
+            self.gameBoard[(i + 1) % self.gridSize, (j + 1) % self.gridSize]
+        ]
         for k in cellNeighbors:
-            print("k: "+str(k)+" i: "+str(i)+" j: "+str(j))
             neighborSum += k
         return neighborSum
 
-    def gameMain(self):
+    """
+      runs the game: iterates through the entire game board, determining what points to
+      change based on Conway's game rules. Implements this by cloning the game board
+      and mapping changes onto the cloned board, replacing the old game board with the
+      new game board once the entire board has been iterated through.
+    """
+    def gameMain(self) -> gameBoard:
         newBoard = self.gameBoard.copy()
-        print("ITERATION")
         for i in range(0, self.gridSize):
             for j in range(0, self.gridSize):
-                if self.gameBoard[i,j] == self.ON:
-                    if self.cellNeighbors(i,j) < 2 or self.cellNeighbors(i,j) > 3:
-                        newBoard[i,j] = self.OFF
+                if self.gameBoard[i, j] == self.ON:
+                    if self.cellNeighbors(i, j) < 2 or self.cellNeighbors(i, j) > 3:
+                        newBoard[i, j] = self.OFF
                 else:
-                    if self.cellNeighbors(i,j) == 3:
-                        newBoard[i,j] = self.ON
+                    if self.cellNeighbors(i, j) == 3:
+                        newBoard[i, j] = self.ON
         self.gameBoard = newBoard
-
+        return self.gameBoard
+    # clears the board / replaces all values in the board with 0 or OFF
     def clearBoard(self):
         self.gameBoard = np.zeros(shape=(self.gridSize, self.gridSize))
 
-    def outGame(self):
-        plt.imshow(self.gameBoard, interpolation='nearest')
-        plt.show()
+    # puts the game board to output
+    def display(self):
+        fig = plt.imshow(self.gameBoard, interpolation='nearest')
 
 
 newGame = GameOfLife(9)
-newGame.plantLife(3, 3)
-newGame.plantLife(2, 3)
-newGame.plantLife(1, 4)
-newGame.plantLife(2, 5)
-print(newGame.cellNeighbors(3, 3))
-print(newGame.cellNeighbors(2, 3))
-print(newGame.cellNeighbors(3, 4))
-newGame.outGame()
-newGame.gameMain()
-newGame.outGame()
-newGame.gameMain()
-newGame.outGame()
-newGame.gameMain()
-newGame.outGame()
-newGame.gameMain()
-newGame.outGame()
-newGame.gameMain()
-newGame.outGame()
-newGame.gameMain()
-newGame.outGame()
-newGame.gameMain()
-v
+newGame.plantLife(0, 0)
+newGame.plantLife(1, 1)
+newGame.plantLife(2, 1)
+newGame.plantLife(1, 2)
+newGame.plantLife(0, 2)
+
