@@ -1,5 +1,5 @@
 # GameOfLife
-####Work in progress.
+#### Work in progress.
 Game of Life implemented in Python.
 This implementation is Object-Oriented as an exercise in 
 Object-Oriented programming.
