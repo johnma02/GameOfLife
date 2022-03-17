@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+from matplotlib import animation
 import time
 
 """
@@ -66,7 +66,8 @@ class GameOfLife:
       and mapping changes onto the cloned board, replacing the old game board with the
       new game board once the entire board has been iterated through.
     """
-    def gameMain(self) -> gameBoard:
+
+    def animate(self, frame, img, gameBoard):
         newBoard = self.gameBoard.copy()
         for i in range(0, self.gridSize):
             for j in range(0, self.gridSize):
@@ -77,15 +78,16 @@ class GameOfLife:
                     if self.cellNeighbors(i, j) == 3:
                         newBoard[i, j] = self.ON
         self.gameBoard = newBoard
-        return self.gameBoard
+        img.set_data(newBoard)
+        return img
 
     # clears the board / replaces all values in the board with 0 or OFF
     def clearBoard(self):
         self.gameBoard = np.zeros(shape=(self.gridSize, self.gridSize))
 
     def displayBoard(self):
-            plt.imshow(self.gameBoard, interpolation='nearest')
-            plt.show()
+        plt.imshow(self.gameBoard, interpolation='nearest')
+        plt.show()
 
 
 def main():
@@ -123,18 +125,23 @@ def main():
               "This is how your game board currently looks like")
         Game.displayBoard()
         while userInput != 'd':
-            userInput= input("To plant life onto your game board, press 'p'\n"
-                             "To finalize your game board, press 'd'\n")
+            userInput = input("To plant life onto your game board, press 'p'\n"
+                              "To finalize your game board, press 'd'\n")
             if userInput == 'p':
-                x = int(input("Enter the x coordinate of your desired life form (0 - "+str(userGridLength)+")\n"))
-                y = int(input("Enter the y coordinate of your desired life form (0 - "+str(userGridLength)+")\n"))
-                Game.plantLife(x,y)
+                x = int(input("Enter the x coordinate of your desired life form (0 - "+str(userGridLength-1)+")\n"))
+                y = int(input("Enter the y coordinate of your desired life form (0 - "+str(userGridLength-1)+")\n"))
+                Game.plantLife(x, y)
                 print("This is how your game board currently looks like")
                 Game.displayBoard()
-
-
-
-
+        print("Saving game to directory")
+        fig, ax = plt.subplots()
+        img = ax.imshow(Game.gameBoard, interpolation='nearest')
+        ani = animation.FuncAnimation(fig, Game.animate, fargs=(img, Game.gameBoard),
+                                      frames = 250,
+                                      interval = 10,
+                                      save_count = 50)
+        ani.save("Game.gif",fps=2)
+        plt.show()
 
 if __name__ == '__main__':
     main()
