@@ -8,7 +8,7 @@ Object-Oriented programming.
 
 
 Once executed, users will be prompted to create a game board with 
-size of their choosing, and then be prompted to populate
+size of their choosing, and then will be prompted to populate
 the game board with "life".
 
 
