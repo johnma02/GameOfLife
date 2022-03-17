@@ -133,6 +133,8 @@ def main():
                 Game.plantLife(x, y)
                 print("This is how your game board currently looks like")
                 Game.displayBoard()
+        print("Your game will be saved to the current directory")
+        time.sleep(2)
         print("Saving game to directory")
         fig, ax = plt.subplots()
         img = ax.imshow(Game.gameBoard, interpolation='nearest')
@@ -140,7 +142,7 @@ def main():
                                       frames = 250,
                                       interval = 10,
                                       save_count = 50)
-        ani.save("Game.gif",fps=2)
+        ani.save("Game.gif",fps=5)
         plt.show()
 
 if __name__ == '__main__':
