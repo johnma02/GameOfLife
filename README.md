@@ -21,4 +21,4 @@ This repository includes an example of a Game.gif file.
 
 Required packages:
 
-Numpy, Matplotlib
+[Numpy](https://numpy.org/install/), [Matplotlib](https://matplotlib.org/stable/users/installing/index.html)
