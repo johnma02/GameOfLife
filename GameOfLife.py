@@ -43,6 +43,9 @@ class GameOfLife:
     def plantLife(self, i: int, j: int):
         self.gameBoard[i, j] = self.ON
 
+    def randomBoard(self):
+        self.gameBoard = np.random.randint(2, size=(self.gridSize, self.gridSize))
+
     # checks the 8 neighbors of a point on the game board
     def cellNeighbors(self, i: int, j: int) -> float:
         neighborSum = 0
@@ -67,6 +70,7 @@ class GameOfLife:
       new game board once the entire board has been iterated through.
     """
 
+    # This function is called by our main method, specifically by a FuncAnimation object to create an animation
     def animate(self, frame, img, gameBoard):
         newBoard = self.gameBoard.copy()
         for i in range(0, self.gridSize):
@@ -125,25 +129,35 @@ def main():
               "This is how your game board currently looks like")
         Game.displayBoard()
         while userInput != 'd':
-            userInput = input("To plant life onto your game board, press 'p'\n"
-                              "To finalize your game board, press 'd'\n")
+            userInput = input("To plant life onto your game board, press [p]\n"
+                              "To create a game board with randomly placed life, press [r]\n"
+                              "To finalize your game board, press [d]\n")
             if userInput == 'p':
                 x = int(input("Enter the x coordinate of your desired life form (0 - "+str(userGridLength-1)+")\n"))
                 y = int(input("Enter the y coordinate of your desired life form (0 - "+str(userGridLength-1)+")\n"))
-                Game.plantLife(x, y)
+                Game.plantLife(y,x)
+                print("This is how your game board currently looks like")
+                Game.displayBoard()
+            if userInput == 'r':
+                Game.randomBoard()
                 print("This is how your game board currently looks like")
                 Game.displayBoard()
         print("Your game will be saved to the current directory")
+        fps = int(input("How fast would you like you game to be played? (Frames per second)\n"))
+        name = input("What would you like your game to be called? (Please end your game name with .gif)\n")
         time.sleep(2)
         print("Saving game to directory")
         fig, ax = plt.subplots()
         img = ax.imshow(Game.gameBoard, interpolation='nearest')
         ani = animation.FuncAnimation(fig, Game.animate, fargs=(img, Game.gameBoard),
-                                      frames = 250,
-                                      interval = 10,
-                                      save_count = 50)
-        ani.save("Game.gif",fps=5)
+                                      frames=250,
+                                      interval=10,
+                                      save_count=50)
+        ani.save(name, fps=fps)
         plt.show()
+        print("Successfully saved Game as Game.gif")
+        print("Exiting program...")
+
 
 if __name__ == '__main__':
     main()
