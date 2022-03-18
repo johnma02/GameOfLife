@@ -17,3 +17,8 @@ in the working directory of the python file.
 
 
 This repository includes an example of a Game.gif file.
+
+
+Required packages:
+
+Numpy, Matplotlib
