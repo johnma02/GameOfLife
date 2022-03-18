@@ -19,6 +19,14 @@ in the working directory of the python file.
 This repository includes an example of a Game.gif file.
 
 
+This program is executable from the command line: 
+
+
+```commandline
+python GameOfLife.py
+```
+
+
 Required packages:
 
 [Numpy](https://numpy.org/install/), [Matplotlib](https://matplotlib.org/stable/users/installing/index.html)
