@@ -32,7 +32,7 @@ This program is executable from the command line, provided the required packages
 ```commandline
 python main.py
 ```
-
+If this program is initiated from the command line, whenever a MatPlotLib plot is opened, the user should close the plot whenever they are finished viewing the plot in order for the program to continue running.
 
 Required packages:
 
@@ -43,5 +43,12 @@ Required packages:
 ## Current future objectives
 - [ ] Allow users to save animations to other directories
 - [ ] Create feature to allow user to save configurations for future use
+
+
+#### Currently, I think using SQLite to store coordinates on on the users cloned directory may be feasible to fufill this task. Will look into it.
 - [ ] Create beautiful GUI
+#### Through some preliminary investigation, _Tkinter_, _Pygame_, or _Qt_ seem to be best suited for this task.
+- [ ] Detect if user has initiated program from command line and run a separate main function giving special instructions to the user
+
 ## Known Issues
+See  above instructions for users who elect to execute this program from the command line
