@@ -42,13 +42,13 @@ Required packages:
 
 ## Current future objectives
 - [ ] Allow users to save animations to other directories
+- [ ] Detect if user has initiated program from command line and run a separate main function giving special instructions to the user
 - [ ] Create feature to allow user to save configurations for future use
 
 
 #### Currently, I think using SQLite to store coordinates on on the users cloned directory may be feasible to fufill this task. Will look into it.
 - [ ] Create beautiful GUI
-#### Through some preliminary investigation, _Tkinter_, _Pygame_, or _Qt_ seem to be best suited for this task.
-- [ ] Detect if user has initiated program from command line and run a separate main function giving special instructions to the user
+#### I'm leaving this task for until I feel this project is "complete". Through some preliminary investigation, _Tkinter_, _Pygame_, or _Qt_ seem to be best suited for this task.
 
 ## Known Issues
 See  above instructions for users who elect to execute this program from the command line
