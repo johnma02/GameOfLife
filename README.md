@@ -40,7 +40,7 @@ Required packages:
 
 
 
-##Current future objectives
+## Current future objectives
 - [ ] Allow users to save animations to other directories
 - [ ] Create feature to allow user to save configurations for future use
 - [ ] Create beautiful GUI
