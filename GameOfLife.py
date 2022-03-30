@@ -11,8 +11,7 @@ If a cell is OFF:
     The cell will turn ON if it has exactly three neighbors
     
 This implementation of the Game of Life uses Numpy arrays to represent the
-game board, Matplotlib to display the game board, and ArgParse to create
-a user interface through the command line.
+game board, Matplotlib to display the game board
 """
 
 
