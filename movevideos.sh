@@ -24,4 +24,19 @@ if [ $NEWDIRECTORY ] ; then
   read PATHNAME
   mkdir $PATHNAME
   mv $1 $PATHNAME
+
+else
+  echo "Enter path for directory, press enter if you would like to save to the current working directory (/GameOfLife)"
+  read PATHNAME
+  PATHEXISTS=0
+  while [ PATHEXISTS -eq 0 ]
+  do
+    if [ -d $PATHNAME] ; then
+      mv $1 $PATHNAME
+      PATHEXISTS=1
+    else
+      echo "Error: path does not exist"
+    fi
+  done
 fi
+
