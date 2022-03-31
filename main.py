@@ -3,7 +3,6 @@ from matplotlib import animation
 import matplotlib.pyplot as plt
 import time
 import subprocess
-import shlex
 
 def main():
     print("Welcome to Conway's Game of Life")
@@ -69,7 +68,7 @@ def main():
         while customDirectory not in boolInput:
             customDirectory = input("Would you like to save your game in a separate directory? [Y/n]\n")
             if boolInput[customDirectory] == True:
-                subprocess.call(shlex.split('./movegif.sh '+name))
+                subprocess.run(args=["bash", "./movegif.sh", name], capture_output=True)
             elif boolInput[customDirectory] == False:
                 print("Successfully saved "+name+" to current working directory")
         print("Exiting program...")
