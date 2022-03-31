@@ -63,14 +63,36 @@ def main():
                                       interval=10,
                                       save_count=50)
         ani.save(name, fps=fps)
-        boolInput = {"Y": True, "n": False}
-        customDirectory = None
-        while customDirectory not in boolInput:
-            customDirectory = input("Would you like to save your game in a separate directory? [Y/n]\n")
-            if boolInput[customDirectory] == True:
-                subprocess.run(args=["bash", "./movegif.sh", name], capture_output=True)
-            elif boolInput[customDirectory] == False:
+        successfulSave = False
+        while not successfulSave:
+            cwd = input("Would you like to save your game in the current working directory?\n")
+            if cwd == "Y":
+                successfulSave = True
                 print("Successfully saved "+name+" to current working directory")
+            elif cwd == "n":
+                newDirectory = input("Would you like to create a new directory to save your game in?\n")
+                if newDirectory == "Y":
+                    pathName = input("Please enter the path name for your new directory\n")
+                    proc = subprocess.run(
+                        ['bash', './movegif.sh', name, '1', pathName],
+                        stdout=subprocess.PIPE,
+                    )
+                    print(proc.stdout.decode("UTF-8"))
+                    if proc.returncode == 0:
+                        successfulSave = True
+                    else:
+                        continue
+                elif newDirectory == "n":
+                    pathName = input("Please enter the path name for your new directory\n")
+                    proc = subprocess.run(
+                        ['bash', './movegif.sh', name, '0', pathName],
+                        stdout=subprocess.PIPE,
+                    )
+                    print(proc.stdout.decode("UTF-8"))
+                    if proc.returncode == 0:
+                        successfulSave = True
+                    else:
+                        continue
         print("Exiting program...")
 
 
