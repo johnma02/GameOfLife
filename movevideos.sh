@@ -23,5 +23,5 @@ if [ $NEWDIRECTORY ] ; then
   echo "Your gif will be saved in this directory"
   read PATHNAME
   mkdir $PATHNAME
-  mv $1 PATHNAME
+  mv $1 $PATHNAME
 fi
