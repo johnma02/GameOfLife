@@ -2,6 +2,8 @@
 
 VALIDINPUT=0
 
+#This is a simple shell script that is called by main.py in order to move saved gifs to user set directories
+
 while [ $VALIDINPUT -eq 0 ]
 do
   echo "Would you like to create a new directory to save this video in? [Y/n]"
@@ -39,4 +41,5 @@ else
     fi
   done
 fi
-
+echo "Successfully moved $1 to $PATHNAME"
+exit 0

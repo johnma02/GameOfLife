@@ -2,6 +2,7 @@ from GameOfLife import GameOfLife
 from matplotlib import animation
 import matplotlib.pyplot as plt
 import time
+import subprocess
 
 def main():
     print("Welcome to Conway's Game of Life")
@@ -54,8 +55,7 @@ def main():
         print("Your game will be saved to the current directory")
         fps = int(input("How fast would you like you game to be played? (Frames per second)\n"))
         name = input("What would you like your game to be called? (Please end your game name with .gif)\n")
-        time.sleep(2)
-        print("Saving game to directory")
+        print("Instantiating game... This may take a while\n")
         fig, ax = plt.subplots()
         img = ax.imshow(Game.gameBoard, interpolation='nearest')
         ani = animation.FuncAnimation(fig, Game.animate, fargs=(img, Game.gameBoard),
@@ -63,7 +63,12 @@ def main():
                                       interval=10,
                                       save_count=50)
         ani.save(name, fps=fps)
-        plt.show()
+        boolInput = {"Y": True, "n": False}
+        customDirectory = None
+        while customDirectory not in boolInput:
+            customDirectory = input("Would you like to save your game in a separate directory? [Y/n]\n")
+        if boolInput(customDirectory):
+            subprocess.call(['bash', './movegif.sh' + name])
         print("Successfully saved Game as "+name)
         print("Exiting program...")
 
