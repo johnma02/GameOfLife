@@ -31,7 +31,7 @@ else
   PATHEXISTS=0
   while [ $PATHEXISTS -eq 0 ]
   do
-    if [ -d $PATHNAME] ; then
+    if [ -d $PATHNAME ] ; then
       mv $1 $PATHNAME
       PATHEXISTS=1
     else
