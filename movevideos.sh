@@ -26,11 +26,11 @@ if [ $NEWDIRECTORY -eq 1 ] ; then
   mv $1 $PATHNAME
 
 else
-  echo "Enter path for directory, press enter if you would like to save to the current working directory (/GameOfLife)"
-  read PATHNAME
   PATHEXISTS=0
   while [ $PATHEXISTS -eq 0 ]
   do
+    echo "Enter path for directory, press enter if you would like to save to the current working directory (/GameOfLife)"
+    read PATHNAME
     if [ -d $PATHNAME ] ; then
       mv $1 $PATHNAME
       PATHEXISTS=1
