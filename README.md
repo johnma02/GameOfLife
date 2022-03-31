@@ -21,7 +21,7 @@ prompted to name their game file.
 
 
 The game instance will be saved as _"name"_.gif
-in the working directory of the python file.
+in a directory of the users choosing.
 
 
 This repository includes an example of a saved game instance named "Example.gif".
