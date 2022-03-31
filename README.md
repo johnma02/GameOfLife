@@ -47,6 +47,7 @@ Required packages:
 - [x] Allow users to save animations to other directories
 - [ ] Add custom colors to finished game gif files
 - [ ] Add cool preset games
+- [ ] Add cropping options to finished game gif files
 - [ ] Detect if user has initiated program from command line and run a separate main function giving special instructions to the user
 - [ ] Create feature to allow user to save configurations for future use
 
