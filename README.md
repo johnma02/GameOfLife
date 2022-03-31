@@ -41,7 +41,7 @@ Required packages:
 
 
 ## Current future objectives
-- [ ] Allow users to save animations to other directories
+- [x] Allow users to save animations to other directories
 - [ ] Detect if user has initiated program from command line and run a separate main function giving special instructions to the user
 - [ ] Create feature to allow user to save configurations for future use
 

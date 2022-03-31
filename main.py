@@ -1,8 +1,8 @@
 from GameOfLife import GameOfLife
 from matplotlib import animation
 import matplotlib.pyplot as plt
-import time
 import subprocess
+import webbrowser
 
 def main():
     print("Welcome to Conway's Game of Life")
@@ -14,20 +14,8 @@ def main():
         print("-- Invalid input --")
         main()
     if userInput == 'e':
-        print("Rules of Conway's Game of Life: ")
-        time.sleep(2)
-        print("The game is played on an 2D array, elements in the array represent cells in the game")
-        time.sleep(3)
-        print("If a cell is ON: \n"
-              "The cell will turn OFF if it has fewer than two neighbors\n"
-              "The cell will also turn OFF if it has more than three neighbors\n"
-              "If the cell has two or three neighbors, it will remain ON")
-        time.sleep(5)
-        print("If a cell is OFF\n"
-              "The cell will turn ON if it has exactly three neighbors")
-        time.sleep(3)
-        print("Returning to Main Menu...")
-        time.sleep(3)
+        print("Opening web browser.")
+        webbrowser.open("http://pi.math.cornell.edu/~lipa/mec/lesson6.html")
         main()
     if userInput == 'q':
         print("Exiting...")
