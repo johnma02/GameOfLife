@@ -16,9 +16,7 @@ game board, Matplotlib to display the game board
 
 
 class GameOfLife:
-    """
-    The body of our game will be contained in this class
-    """
+    # The body of our game will be contained in this class
     # Static variables representing cell states on our game board.
     ON = 1.00
     OFF = 0.00
