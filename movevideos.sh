@@ -18,7 +18,7 @@ do
   fi
 done
 
-if [ $NEWDIRECTORY ] ; then
+if [ $NEWDIRECTORY -eq 1 ] ; then
   echo "Enter the path for your new directory"
   echo "Your gif will be saved in this directory"
   read PATHNAME
