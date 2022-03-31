@@ -67,9 +67,10 @@ def main():
         customDirectory = None
         while customDirectory not in boolInput:
             customDirectory = input("Would you like to save your game in a separate directory? [Y/n]\n")
-        if boolInput(customDirectory):
+        if boolInput(customDirectory) == True:
             subprocess.call(['bash', './movegif.sh' + name])
-        print("Successfully saved Game as "+name)
+        else:
+            print("Successfully saved "+name+" to current working directory")
         print("Exiting program...")
 
 

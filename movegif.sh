@@ -41,5 +41,5 @@ else
     fi
   done
 fi
-echo "Successfully moved $1 to $PATHNAME"
+echo "Successfully saved $1 to $PATHNAME"
 exit 0
