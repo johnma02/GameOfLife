@@ -1,6 +1,7 @@
 # GameOfLife
 #### Work in progress.
 Game of Life implemented in Python.
+![alt-text](https://github.com/johnma02/GameOfLife/blob/master/GameExamples/largerInstance.gif)
 This implementation is Object-Oriented as an exercise in 
 Object-Oriented programming.
 
