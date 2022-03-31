@@ -40,7 +40,6 @@ def main():
                 Game.randomBoard()
                 print("This is how your game board currently looks like")
                 Game.displayBoard()
-        print("Your game will be saved to the current directory")
         fps = int(input("How fast would you like you game to be played? (Frames per second)\n"))
         name = input("What would you like your game to be called? (Please end your game name with .gif)\n")
         print("Instantiating game... This may take a while\n")
@@ -53,12 +52,12 @@ def main():
         ani.save(name, fps=fps)
         successfulSave = False
         while not successfulSave:
-            cwd = input("Would you like to save your game in the current working directory?\n")
+            cwd = input("Would you like to save your game in the current working directory? [Y/n]\n")
             if cwd == "Y":
                 successfulSave = True
                 print("Successfully saved "+name+" to current working directory")
             elif cwd == "n":
-                newDirectory = input("Would you like to create a new directory to save your game in?\n")
+                newDirectory = input("Would you like to create a new directory to save your game in [Y/n]?\n")
                 if newDirectory == "Y":
                     pathName = input("Please enter the path name for your new directory\n")
                     proc = subprocess.run(
