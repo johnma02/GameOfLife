@@ -15,7 +15,8 @@ if [ $2 -eq 1 ] ; then
 
 else
   if [ -d $3 ] ; then
-    if [ -e $1 ] ; then
+    FILE=$3/$1
+    if [ -f "$FILE" ] ; then
       echo "Error: file already exists in named directory with same name!"
       exit 1
     fi
