@@ -26,7 +26,7 @@ in a directory of the users choosing.
 
 This repository includes an example of a saved game instance named "Example.gif".
 
-This example is a "Glider" pattern, see this [link](http://pi.math.cornell.edu/~lipa/mec/lesson6.html) for more
+See this [link](http://pi.math.cornell.edu/~lipa/mec/lesson6.html) for more
 interesting patterns.
 
 This program is executable from the command line, provided the required packages are installed.
@@ -40,21 +40,3 @@ If this program is initiated from the command line, whenever a MatPlotLib plot i
 Required packages:
 
 [Numpy](https://numpy.org/install/), [Matplotlib](https://matplotlib.org/stable/users/installing/index.html)
-
-
-
-## Current future objectives
-- [x] Allow users to save animations to other directories
-- [ ] Add custom colors to finished game gif files
-- [ ] Add cool preset games
-- [ ] Add cropping options to finished game gif files
-- [ ] Detect if user has initiated program from command line and run a separate main function giving special instructions to the user
-- [ ] Create feature to allow user to save configurations for future use
-
-
-#### Currently, I think using SQLite to store coordinates on on the users cloned directory may be feasible to fufill this task. Will look into it.
-- [ ] Create beautiful GUI
-#### I'm leaving this task for until I feel this project is "complete". Through some preliminary investigation, _Tkinter_, _Pygame_, or _Qt_ seem to be best suited for this task.
-
-## Known Issues
-See  above instructions for users who elect to execute this program from the command line
